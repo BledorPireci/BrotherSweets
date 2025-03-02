@@ -56,26 +56,6 @@
   }
 }
 
-@keyframes fadeScaleOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
-  }
-}
-
 @keyframes backgroundShift {
   0% {
     background-position: 0% 50%;
@@ -85,6 +65,24 @@
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+@keyframes simpleFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes simpleFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
@@ -231,11 +229,7 @@
         height: auto;
         object-fit: contain;
         filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
-        transition: transform 0.3s ease;
-        
-        &:hover {
-          transform: scale(1.03) translateY(-5px);
-        }
+        transition: opacity 0.3s ease;
       }
     }
     
@@ -332,10 +326,6 @@
   h1, h2 {
     color: #F02B83;
   }
-  
-  .imageContent img {
-    animation: pulseGlow 4s ease-in-out infinite;
-  }
 }
 
 .slide2 {
@@ -346,11 +336,6 @@
   
   h1, h2 {
     color: #EFBE41;
-  }
-  
-  .imageContent img {
-    animation: pulseGlow 5s ease-in-out infinite;
-    animation-delay: 0.2s;
   }
 }
 
@@ -363,11 +348,6 @@
   h1, h2 {
     color: #F02B83;
   }
-  
-  .imageContent img {
-    animation: pulseGlow 6s ease-in-out infinite;
-    animation-delay: 0.4s;
-  }
 }
 
 .slide4 {
@@ -379,11 +359,6 @@
   h1, h2 {
     color: #EFBE41;
   }
-  
-  .imageContent img {
-    animation: pulseGlow 5.5s ease-in-out infinite;
-    animation-delay: 0.3s;
-  }
 }
 
 .exitText {
@@ -391,5 +366,9 @@
 }
 
 .exitImage {
-  animation: fadeScaleOut 0.5s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards !important;
+  animation: simpleFadeOut 0.5s ease forwards !important;
+}
+
+.enterImage {
+  animation: simpleFadeIn 0.5s ease forwards;
 }

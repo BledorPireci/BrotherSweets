@@ -36,13 +36,24 @@ const slides = [
 const RegularGallow = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isEntering, setIsEntering] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
+      // Start exit animation
       setIsAnimating(true);
+      
       setTimeout(() => {
+        // Change slide
         setCurrentSlide((prevSlide) => (prevSlide + 1) % slides.length);
         setIsAnimating(false);
+        // Start enter animation
+        setIsEntering(true);
+        
+        // Remove enter animation class after animation completes
+        setTimeout(() => {
+          setIsEntering(false);
+        }, 500);
       }, 500); // Match this with exit animation duration
     }, 5000);
 
@@ -70,7 +81,7 @@ const RegularGallow = () => {
           <img 
             src={slides[currentSlide].image} 
             alt="Gallow product"
-            className={isAnimating ? styles.exitImage : ''}
+            className={isAnimating ? styles.exitImage : isEntering ? styles.enterImage : ''}
           />
         </div>
       </div>
