@@ -289,8 +289,6 @@
       .valueIcon {
         font-size: 3rem;
         margin-bottom: 1rem;
-        animation: float 6s ease-in-out infinite;
-        animation-delay: calc(0.5s * var(--i, 0));
         filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.1));
       }
       

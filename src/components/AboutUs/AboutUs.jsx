@@ -78,9 +78,9 @@ const AboutUs = () => {
           <div className={styles.textContent}>
             <h2>Meet Our Founder</h2>
             <p>
-              Brother Sweets was founded by candy enthusiast and culinary innovator, Michael Brooks. 
+              Brother Sweets was founded by candy enthusiast and culinary innovator, Fuat Miftari. 
               With a background in traditional confectionery and a passion for creating unique flavor 
-              combinations, Michael set out to create a candy brand that would stand out in the market.
+              combinations, Fuat set out to create a candy brand that would stand out in the market.
             </p>
             <p>
               "I wanted to create treats that would bring back childhood memories while also offering 

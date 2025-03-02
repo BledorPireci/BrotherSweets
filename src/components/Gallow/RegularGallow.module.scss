@@ -67,15 +67,6 @@
   }
 }
 
-@keyframes floatAnimation {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-15px);
-  }
-}
-
 @keyframes pulseGlow {
   0%, 100% {
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
@@ -239,13 +230,11 @@
         width: clamp(250px, 35vw, 450px);
         height: auto;
         object-fit: contain;
-        animation: floatAnimation 6s ease-in-out infinite;
         filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
         transition: transform 0.3s ease;
         
         &:hover {
           transform: scale(1.03) translateY(-5px);
-          animation-play-state: paused;
         }
       }
     }
@@ -345,7 +334,7 @@
   }
   
   .imageContent img {
-    animation: floatAnimation 6s ease-in-out infinite, pulseGlow 4s ease-in-out infinite;
+    animation: pulseGlow 4s ease-in-out infinite;
   }
 }
 
@@ -360,7 +349,7 @@
   }
   
   .imageContent img {
-    animation: floatAnimation 7s ease-in-out infinite, pulseGlow 5s ease-in-out infinite;
+    animation: pulseGlow 5s ease-in-out infinite;
     animation-delay: 0.2s;
   }
 }
@@ -376,7 +365,7 @@
   }
   
   .imageContent img {
-    animation: floatAnimation 8s ease-in-out infinite, pulseGlow 6s ease-in-out infinite;
+    animation: pulseGlow 6s ease-in-out infinite;
     animation-delay: 0.4s;
   }
 }
@@ -392,7 +381,7 @@
   }
   
   .imageContent img {
-    animation: floatAnimation 7.5s ease-in-out infinite, pulseGlow 5.5s ease-in-out infinite;
+    animation: pulseGlow 5.5s ease-in-out infinite;
     animation-delay: 0.3s;
   }
 }
