@@ -1,0 +1,223 @@
+// Variables
+$footer-bg: #FF99B8;
+$text-color: white;
+$max-width: 1200px;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$font-family: 'Poppins', sans-serif;
+
+// Animation keyframes
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.footer {
+  background-color: $footer-bg;
+  color: $text-color;
+  font-family: $font-family;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 80px 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  
+  .footerContent {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-md;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    animation: slideInUp 0.8s ease-out forwards;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      text-align: center;
+    }
+  }
+
+  .logoSection {
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards 0.3s;
+    
+    .logo {
+      width: 60px;
+      height: auto;
+      margin-bottom: $spacing-sm;
+      opacity: 0;
+      animation: popIn 0.8s ease-out forwards 0.5s;
+      
+      &:hover {
+        animation: pulse 2s ease-in-out infinite;
+      }
+    }
+
+    .description {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-top: $spacing-sm;
+      opacity: 0;
+      animation: fadeIn 0.8s ease-out forwards 0.7s;
+    }
+  }
+
+  .section {
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+    
+    &:nth-child(2) {
+      animation-delay: 0.4s;
+    }
+    
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    
+    &:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: $spacing-sm;
+      opacity: 0;
+      animation: slideInUp 0.8s ease-out forwards;
+      animation-delay: inherit;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        animation: slideInRight 0.5s ease-out forwards;
+        
+        @for $i from 1 through 6 {
+          &:nth-child(#{$i}) {
+            animation-delay: calc(0.2s * #{$i} + 0.5s);
+          }
+        }
+
+        @media (max-width: 768px) {
+          justify-content: center;
+        }
+
+        a {
+          color: $text-color;
+          text-decoration: none;
+          position: relative;
+
+          &::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background-color: $text-color;
+            transition: width 0.3s ease;
+          }
+
+          &:hover::after {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    width: 24px;
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.contactItem {
+  a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    padding: 8px;
+    border-radius: 8px;
+    transform-origin: left;
+
+    .icon {
+      transition: transform 0.3s ease;
+    }
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      
+      .icon {
+        transform: scale(1.2);
+      }
+    }
+  }
+}

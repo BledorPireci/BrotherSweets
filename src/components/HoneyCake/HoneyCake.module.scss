@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Boogaloo&display=swap');
+
+// Animation keyframes
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes popIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(45deg);
+    }
+    50% {
+        transform: translateY(-10px) rotate(45deg);
+    }
+}
+
+.gallowContainer {
+  padding: 4rem 0 4rem 0;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  margin: 1rem 2rem;
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08), 0 1px 12px rgba(0, 0, 0, 0.04);
+  position: relative;
+  overflow: hidden;
+  background-color: #1E1E1E;
+  animation: fadeIn 0.8s ease-out forwards;
+  
+  @media (max-width: 1024px) {
+    margin: 1rem;
+  }
+  @media (max-width: 480px) {
+    margin: 10px;
+  }
+}
+
+.content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 5vw, 8rem);
+  min-height: 450px;
+  padding: 0 2rem;
+  
+  .textContent {
+    flex: 1;
+    min-height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0;
+    animation: slideInLeft 0.8s ease-out forwards 0.3s;
+    
+    .textWrapper {
+      width: 100%;
+      max-width: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      
+      h1 {
+        font-size: clamp(3rem, 4vw, 4.5rem);
+        font-family: 'Boogaloo', cursive;
+        width: 100%;
+        margin: 0;
+        color: #FFA726;
+        height: auto;
+        min-height: 3.5rem;
+        opacity: 0;
+        animation: slideInUp 0.8s ease-out forwards 0.5s;
+      }
+      
+      h2 {
+        font-size: clamp(2rem, 3vw, 3rem);
+        margin-bottom: 1.5rem;
+        font-family: 'Boogaloo', cursive;
+        height: auto;
+        min-height: 2.5rem;
+        line-height: 1.2;
+        width: 100%;
+        color: white;
+        opacity: 0;
+        animation: slideInUp 0.8s ease-out forwards 0.7s;
+      }
+      
+      p {
+        font-size: clamp(1.2rem, 1.5vw, 1.5rem);
+        color: white;
+        font-family: 'Boogaloo', cursive;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        min-height: 80px;
+        width: 100%;
+        opacity: 0;
+        animation: slideInUp 0.8s ease-out forwards 0.9s;
+      }
+    }
+  }
+  
+  .imageContent {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 50%;
+    min-height: 450px;
+    overflow: visible;
+    opacity: 0;
+    animation: slideInRight 0.8s ease-out forwards 0.3s;
+    
+    img {
+      max-width: 100%;
+      width: clamp(250px, 35vw, 450px);
+      height: auto;
+      object-fit: contain;
+      transition: transform 0.5s ease;
+      position: relative;
+      z-index: 2;
+      opacity: 0;
+      animation: popIn 0.8s ease-out forwards 0.6s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 20px;
+      background-color: #959595;
+      transform: rotate(45deg);
+      z-index: 1;
+      opacity: 0;
+      animation: float 6s ease-in-out infinite, fadeIn 0.8s ease-out forwards 0.4s;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    gap: 4rem;
+    
+    .imageContent {
+      img {
+        width: clamp(220px, 30vw, 400px);
+      }
+      
+      &::before {
+        width: 320px;
+        height: 320px;
+      }
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem;
+    min-height: auto;
+    
+    .textContent {
+      min-height: auto;
+      width: 100%;
+      
+      .textWrapper {
+        max-width: 500px;
+        padding: 0;
+      }
+    }
+    
+    .imageContent {
+      width: 100%;
+      max-width: 100%;
+      min-height: 350px;
+      
+      img {
+        width: clamp(220px, 45vw, 350px);
+      }
+      
+      &::before {
+        width: 300px;
+        height: 300px;
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .imageContent {
+      img {
+        width: clamp(200px, 60vw, 300px);
+      }
+      
+      &::before {
+        width: 260px;
+        height: 260px;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+    gap: 2rem;
+    
+    .textContent {
+      .textWrapper {
+        h1 {
+          font-size: 2.5rem;
+          min-height: 3rem;
+        }
+        
+        h2 {
+          font-size: 1.8rem;
+          min-height: 2.2rem;
+        }
+        
+        p {
+          font-size: 1.1rem;
+          min-height: 60px;
+        }
+      }
+    }
+    
+    .imageContent {
+      min-height: 200px;
+      
+      img {
+        width: 90%;
+        max-width: 250px;
+      }
+      
+      &::before {
+        width: 220px;
+        height: 220px;
+      }
+    }
+  }
+}
