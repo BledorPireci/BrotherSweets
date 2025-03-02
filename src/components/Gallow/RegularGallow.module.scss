@@ -13,44 +13,37 @@
   @media (max-width: 480px) {
     margin: 10px;
   }
+}
+
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
   
-  // Slick slider customization
-  :global {
-    .slick-dots {
-      bottom: 20px;
-      
-      li {
-        margin: 0 5px;
-        
-        button:before {
-          font-size: 12px;
-          color: rgba(255, 255, 255, 0.7);
-          opacity: 0.5;
-        }
-        
-        &.slick-active button:before {
-          color: white;
-          opacity: 1;
-        }
-      }
-    }
-    
-    .slick-slide {
-      outline: none;
-    }
+  &:hover, &:focus {
+    background-color: rgba(255, 255, 255, 0.8);
+    outline: none;
   }
 }
 
-.customDot {
-  width: 10px;
-  height: 10px;
-  background-color: rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  display: inline-block;
-  
-  :global(.slick-active) & {
-    background-color: white;
-  }
+.activeDot {
+  background-color: white;
 }
 
 .slide {
@@ -59,6 +52,7 @@
   display: flex;
   align-items: center;
   background-size: 200% 200%;
+  transition: background-color 0.5s ease;
   
   &::before {
     content: '';
@@ -69,6 +63,11 @@
     height: 100%;
     background: linear-gradient(120deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
     pointer-events: none;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2rem 0;
+    min-height: 70vh;
   }
 }
 
@@ -106,6 +105,7 @@
         width: 100%;
         margin: 0;
         position: relative;
+        transition: color 0.5s ease;
         
         &::after {
           content: '';
@@ -127,6 +127,7 @@
         font-family: 'Boogaloo', cursive;
         line-height: 1.2;
         width: 100%;
+        transition: color 0.5s ease;
       }
       
       p {
@@ -137,6 +138,7 @@
         line-height: 1.6;
         margin-bottom: 2.5rem;
         width: 100%;
+        transition: opacity 0.5s ease;
       }
     }
     
@@ -166,6 +168,7 @@
       height: auto;
       object-fit: contain;
       filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.15));
+      transition: opacity 0.5s ease;
     }
   }
   
